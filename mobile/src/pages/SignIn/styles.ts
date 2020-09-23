@@ -39,7 +39,7 @@ export const CreateAccountButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-`; // nao vai mudar em nada o estilo quando o usuario clica em cima
+`;
 
 export const CreateAccountButtonText = styled.Text`
   color: #ff9000;
