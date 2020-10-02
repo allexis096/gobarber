@@ -1,5 +1,3 @@
-// import AppError from '@shared/errors/AppError';
-
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import ListProvidersService from './ListProvidersService';
 
@@ -27,8 +25,8 @@ describe('Update User Avatar', () => {
     });
 
     const loggedUser = await fakeUsersRepository.create({
-      name: 'John Tre',
-      email: 'johntre@gmail.com',
+      name: 'John Qua',
+      email: 'johnqua@gmail.com',
       password: '123456',
     });
 
