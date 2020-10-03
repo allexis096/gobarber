@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
 
-import INotificationRepository from '@modules/notifications/repositories/INotificationRepository';
+import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import IApointmentsRepository from '../repositories/IAppointmentsRepository';
 
 import Appointment from '../infra/typeorm/entities/Appointment';
@@ -21,7 +21,7 @@ class CreateAppointmentService {
     private appointmentsRepository: IApointmentsRepository,
 
     @inject('NotificationsRepository')
-    private notificationsRepository: INotificationRepository,
+    private notificationsRepository: INotificationsRepository,
   ) {}
 
   public async execute({
