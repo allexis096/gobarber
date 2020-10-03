@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-
+import { classToClass } from 'class-transformer';
 import { container } from 'tsyringe';
 
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
@@ -15,8 +15,8 @@ export default class SessionsController {
       password,
     });
 
-    delete user.password;
-
-    return response.json({ user, token });
+    return response.json({ user: classToClass(user), token });
   }
 }
+
+// classToClass(user) => vai excluir o password passado anteriormente na entity User
