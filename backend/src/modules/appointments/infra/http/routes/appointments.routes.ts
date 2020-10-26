@@ -4,10 +4,10 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import AppointmentsController from '../controllers/AppointmentsController';
-import ProvidersAppointmentsController from '../controllers/ProviderAppointmentsController';
+import ProviderAppointmentsController from '../controllers/ProviderAppointmentsController';
 
 const appointmentsController = new AppointmentsController();
-const providerAppointmentsController = new ProvidersAppointmentsController();
+const providerAppointmentsController = new ProviderAppointmentsController();
 
 const appointmentsRouter = Router();
 
