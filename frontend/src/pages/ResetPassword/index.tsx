@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import { FiLock } from 'react-icons/fi';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
@@ -14,6 +14,7 @@ import Button from '../../components/Button';
 import logoImg from '../../assets/logo.svg';
 
 import { Container, Content, Background, AnimationContent } from './styles';
+import api from '../../services/api';
 
 interface ResetPasswordFormData {
   password: string;
@@ -23,6 +24,7 @@ interface ResetPasswordFormData {
 const ResetPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
+  const location = useLocation();
 
   const { addToast } = useToast();
 
@@ -43,6 +45,18 @@ const ResetPassword: React.FC = () => {
           abortEarly: false,
         });
 
+        const token = location.search.replace('?token=', '');
+
+        if (!token) {
+          throw new Error();
+        }
+
+        await api.post('/password/reset', {
+          password: data.password,
+          password_confirmation: data.password_confirmation,
+          token,
+        });
+
         history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -60,7 +74,7 @@ const ResetPassword: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast, history, location],
   );
 
   return (
