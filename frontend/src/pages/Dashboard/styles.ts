@@ -123,6 +123,7 @@ export const NextAppointment = styled.div`
     }
 
     img {
+      object-fit: cover;
       width: 80px;
       height: 80px;
       border-radius: 50%;
@@ -158,6 +159,10 @@ export const Section = styled.section`
     display: block;
     padding-bottom: 16px;
     margin-bottom: 16px;
+  }
+
+  > p {
+    color: #999591;
   }
 `;
 
